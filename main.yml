@@ -1,0 +1,24 @@
+---
+# - import_playbook: configure/main.yml
+# - import_playbook: db/main.yml
+# - import_playbook: apps/main.yml
+
+- hosts: all
+  roles:
+    - configure
+
+- hosts: frontends
+  roles:
+    - haproxy
+
+- hosts: apps
+  roles:
+    - apache
+
+- hosts: apps
+  roles:
+    - apps
+
+- hosts: appdbs
+  roles:
+    - db
